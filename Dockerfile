@@ -1,5 +1,5 @@
 # Stage 1: Build Stage
-FROM node:14 as build
+FROM node:9.4.0 as build
 WORKDIR /app
 
 # Copy package.json and package-lock.json
@@ -19,7 +19,7 @@ FROM nginx:alpine
 WORKDIR /usr/share/nginx/html
 
 # Copy the built assets from the build stage
-COPY --from=build /app/build .
+COPY --from=build /app/path/to/your/built/assets .
 
 # Expose the port
 EXPOSE 80

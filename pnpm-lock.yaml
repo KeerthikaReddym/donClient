@@ -30,7 +30,7 @@ dependencies:
     specifier: ^4.12.0
     version: 4.12.0(react@18.2.0)
   react-modal-video:
-    specifier: ^2.0.0
+    specifier: ^2.0.1
     version: 2.0.1(react-dom@18.2.0)(react@18.2.0)
   vite:
     specifier: ^5.0.6
@@ -38,28 +38,28 @@ dependencies:
 
 devDependencies:
   '@types/node':
-    specifier: ^20.8.9
+    specifier: ^20.10.3
     version: 20.10.3
   '@types/react':
-    specifier: ^18.2.33
+    specifier: ^18.2.42
     version: 18.2.42
   autoprefixer:
     specifier: ^10.4.16
     version: 10.4.16(postcss@8.4.32)
   postcss:
-    specifier: ^8.4.31
+    specifier: ^8.4.32
     version: 8.4.32
   prettier:
-    specifier: ^3.0.3
+    specifier: ^3.1.0
     version: 3.1.0
   prettier-plugin-tailwindcss:
-    specifier: ^0.5.6
+    specifier: ^0.5.9
     version: 0.5.9(prettier@3.1.0)
   tailwindcss:
-    specifier: ^3.3.5
+    specifier: ^3.3.6
     version: 3.3.6
   typescript:
-    specifier: ^5.2.2
+    specifier: ^5.3.3
     version: 5.3.3
 
 packages:

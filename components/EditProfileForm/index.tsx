@@ -53,7 +53,7 @@ const EditProfileForm = () => {
 
       if (response.status === 200) {
         signIn(responseData);
-        //alert("Profile updated successfully!");
+         alert("Profile updated successfully!");
         router.push("/");
       } else if (response.status === 404) {
         alert(responseData.message || responseData);
@@ -70,7 +70,8 @@ const EditProfileForm = () => {
   };
 
   if (!user) {
-    router.push('/');// or any other loading state
+    //router.push('/');// or any other loading state
+    return <div>Loading...</div>; // or any other loading state
   }
 
   return (

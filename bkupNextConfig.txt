@@ -9,6 +9,11 @@ const nextConfig = {
         port: "",
       },
     ],
+  },
+  build: {
+    rollupOptions: {
+      input: "components/Hero/index.tsx", // Adjust this to your actual entry point
+    },
   }
 };
 

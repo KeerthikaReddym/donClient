@@ -34,7 +34,7 @@ const EditProfileForm = () => {
     // console.log(user.customId);
     try {
       const response = await fetch(
-        `http://localhost:8080/users/updateUser/${user.customId}`,
+        `https://donhub.onrender.com/users/updateUser/${user.customId}`,
         {
           method: "PUT",
           body: formData,
@@ -53,7 +53,7 @@ const EditProfileForm = () => {
 
       if (response.status === 200) {
         signIn(responseData);
-        alert("Profile updated successfully!");
+        //alert("Profile updated successfully!");
         router.push("/");
       } else if (response.status === 404) {
         alert(responseData.message || responseData);
@@ -70,7 +70,7 @@ const EditProfileForm = () => {
   };
 
   if (!user) {
-    return <div>Loading...</div>; // or any other loading state
+    router.push('/');// or any other loading state
   }
 
   return (

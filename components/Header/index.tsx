@@ -1,27 +1,37 @@
 "use client";
 
-import React, { useContext } from 'react';
-import { AuthContext } from '../../contexts/AuthContext'
+import React, { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import ThemeToggler from "./ThemeToggler";
 import menuData from "./menuData";
-import Dropdown from './dropDown';
+import Dropdown from "./dropDown";
 import mastadon_dark from "../../public/images/logo/logo-dark.png";
 
 const Header = () => {
-
   const { user } = useContext(AuthContext);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
-  // Navbar toggle
+  const [timeoutId, setTimeoutId] = useState(null);
+
+
+  const showDropdown = () => {
+    clearTimeout(timeoutId); 
+    setDropdownOpen(true);
+  };
+  const hideDropdown = () => {
+    const id = setTimeout(() => {
+      setDropdownOpen(false);
+    }, 200); 
+    setTimeoutId(id);
+  };
+
   const [navbarOpen, setNavbarOpen] = useState(false);
   const navbarToggleHandler = () => {
     setNavbarOpen(!navbarOpen);
   };
-
 
   // Sticky Navbar
   const [sticky, setSticky] = useState(false);
@@ -158,18 +168,42 @@ const Header = () => {
               <div className="flex items-center justify-end pr-16 lg:pr-0">
                 {user ? (
                   <>
-                    <span>Hi, {user.name}</span>
-                    <div onClick={toggleDropdown} className="relative cursor-pointer">
-                      <Image referrerPolicy="no-referrer" src={`data:image/jpeg;base64,${user.profilePic}`} alt="Profile" className="w-8 rounded-full" width={500} height={300}/>
-                      {dropdownOpen && <Dropdown/>}
+                    <span className="user-greeting">Hi, {user.name}</span>
+                    <div
+                      onMouseEnter={showDropdown}
+                      onMouseLeave={hideDropdown}
+                      className="relative cursor-pointer"
+                    >
+                      <Image
+                        referrerPolicy="no-referrer"
+                        src={`data:image/jpeg;base64,${user.profilePic}`}
+                        alt="Profile"
+                        className="w-8 rounded-full"
+                        width={500}
+                        height={300}
+                      />
+                      {dropdownOpen && (
+                        <div
+                          onMouseEnter={showDropdown}
+                          onMouseLeave={hideDropdown}
+                        >
+                          <Dropdown />
+                        </div>
+                      )}
                     </div>
                   </>
                 ) : (
                   <>
-                    <Link href="/signin" className="hidden px-7 py-3 text-base font-medium text-dark hover:text-primary dark:text-white/70 dark:hover:text-white md:block">
+                    <Link
+                      href="/signin"
+                      className="hidden px-7 py-3 text-base font-medium text-dark hover:text-primary dark:text-white/70 dark:hover:text-white md:block"
+                    >
                       Sign In
                     </Link>
-                    <Link href="/signup" className="ease-in-up hidden rounded-sm bg-primary px-8 py-3 text-base font-medium text-black dark:text-white shadow-btn transition duration-300 hover:bg-opacity-90 hover:shadow-btn-hover md:block md:px-9 lg:px-6 xl:px-9">
+                    <Link
+                      href="/signup"
+                      className="ease-in-up hidden rounded-sm bg-primary px-8 py-3 text-base font-medium text-black shadow-btn transition duration-300 hover:bg-opacity-90 hover:shadow-btn-hover dark:text-white md:block md:px-9 lg:px-6 xl:px-9"
+                    >
                       Sign Up
                     </Link>
                   </>

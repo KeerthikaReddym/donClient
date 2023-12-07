@@ -9,7 +9,7 @@ const PostAProductForm = () => {
 
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [price, setPrice] = useState("");
+  const [price, setPrice] = useState(0);
   const [category, setCategory] = useState("");
   const [images, setImages] = useState([]);
   const [imageNames, setImageNames] = useState([]);
@@ -17,8 +17,8 @@ const PostAProductForm = () => {
 
   useEffect(() => {
     // If category is 'freebies', set price to 0
-    if (category === "freebies") {
-      setPrice("0");
+    if (category === "FREEBIES") {
+      setPrice(0);
     }
   }, [category]);
 
@@ -27,6 +27,8 @@ const PostAProductForm = () => {
       router.push("/");
     }
   }, [user, router]);
+
+  const isPriceDisabled = category === "FREEBIES";
 
   const handleProductPictureChange = (event) => {
     const selectedImages = [...event.target.files];
@@ -54,7 +56,7 @@ const PostAProductForm = () => {
     formData.append("date", new Date().toISOString());
 
     try {
-      const response = await fetch(`http://localhost:8080/donHub/product`, {
+      const response = await fetch(`https://donhub.onrender.com/donHub/product`, {
         // Replace with your actual API endpoint
         method: "POST",
         body: formData,
@@ -74,7 +76,7 @@ const PostAProductForm = () => {
         alert("Product posted successfully!");
         setName("");
         setDescription("");
-        setPrice("");
+        setPrice(0);
         setCategory("");
         setImages([]);
         setImageNames([]);
@@ -217,6 +219,7 @@ const PostAProductForm = () => {
           placeholder="Enter Price"
           value={price}
           onChange={handlePriceChange}
+          disabled={isPriceDisabled}
           className="w-full rounded-sm border border-stroke bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:focus:border-primary dark:focus:shadow-none"
         />
       </div>

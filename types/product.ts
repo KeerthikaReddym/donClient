@@ -1,5 +1,5 @@
 export type Product = {
-  id: number;
+  Id: number;
   name: string;
   description: string;
   image: string[];
@@ -7,9 +7,11 @@ export type Product = {
     name: string;
     emailId: string;
     profilePic: File;
+    phoneNo: string;
   }
   date: string;
   condition: string;
   category: string;
   price: number;
+  phone: number;
 };

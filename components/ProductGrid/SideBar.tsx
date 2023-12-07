@@ -3,39 +3,51 @@
 import { useState, useContext } from "react";
 import { ProductsContext } from "@/contexts/ProductContext";
 import { AuthContext } from "@/contexts/AuthContext";
+//import { MyProductsContext } from "@/contexts/MyProductsContext";
 
 const Sidebar = () => {
   const [category, setCategory] = useState("");
   const [condition, setCondition] = useState("");
   const [myProducts, setMyProducts] = useState(false);
 
-  const { updateProducts } = useContext(ProductsContext);
+  const { setProducts } = useContext(ProductsContext);
+  //const { setIsMyProductsChecked } = useContext(MyProductsContext);
   const { user } = useContext(AuthContext);
+
+  // const handleMyProductsChange = (e) => {
+  //   setIsMyProductsChecked(e.target.checked);
+  // };
+
+  // const handleBothChanges = (e) => {
+  //   setMyProducts(e);
+  //   handleMyProductsChange(e);
+  // }
+
   const applyFilters = async () => {
     let url;
     let response, data;
 
     // Check if both category and condition are provided
     if (category && condition) {
-      url = `http://localhost:8080/donHub/product/getProductsByFilters/${category}/${condition}`;
+      url = `https://donhub.onrender.com/donHub/product/getProductsByFilters/${category}/${condition}`;
     } else if (category) {
       // Only category is provided
-      url = `http://localhost:8080/donHub/product/getByCategory/${category}`;
+      url = `https://donhub.onrender.com/donHub/product/getByCategory/${category}`;
     } else if (condition) {
       // Only condition is provided
-      url = `http://localhost:8080/donHub/product/getByCondition/${condition}`;
+      url = `https://donhub.onrender.com/donHub/product/getByCondition/${condition}`;
     } else if (myProducts && user && user.emailId) {
-      url = `http://localhost:8080/donHub/product/getByEmail/${encodeURIComponent(user.emailId)}`
+      url = `https://donhub.onrender.com/donHub/product/getByEmail/${encodeURIComponent(user.emailId)}`
     } else {
       // No filters are provided, fetch all products
-      url = `http://localhost:8080/donHub/product`;
+      url = `https://donhub.onrender.com/donHub/product`;
     }
 
     try {
       response = await fetch(url);
       data = await response.json();
       console.log("Filtered Products:", data);
-      updateProducts(data);
+      setProducts(data);
     } catch (error) {
       console.error("Error fetching products:", error);
     }

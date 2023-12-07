@@ -8,9 +8,8 @@ import {
   FaSnapchat,
   FaInstagram,
   FaGithub,
-  FaBlog,
 } from "react-icons/fa";
-import { FaBlackTie, FaBlogger } from "react-icons/fa";
+
 
 const Footer = () => {
   return (
@@ -78,34 +77,13 @@ const Footer = () => {
                   >
                     <FaGithub/>
                   </a>
-                  <a
-                    href="/blog"
-                    aria-label="Blog"
-                    className="mr-6 text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
-                  >
-                    <FaBlog/>
-                  </a>
-                  <a
-                    href="/blog-sidebar"
-                    aria-label="Blog-sidebar"
-                    className="mr-6 text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
-                  >
-                    <FaBlogger/>
-                  </a>
-                  <a
-                    href="/blog-details"
-                    aria-label="Blog details page"
-                    className="mr-6 text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
-                  >
-                    <FaBlackTie/>
-                  </a>
                 </div>
               </div>
             </div>
 
             <div className="w-full px-4 md:w-1/2 lg:w-4/12 xl:w-3/12 container flex justify-end">
               <div className="mb-12 lg:mb-16">
-                <h2 className="mb-10 text-xl font-bold text-black dark:text-white">
+                <h2 className="mb-10 text-xl font-bold text-primary dark:text-white">
                   Support & Help
                 </h2>
                 <ul>

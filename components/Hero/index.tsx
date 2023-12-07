@@ -14,7 +14,7 @@ const Hero = () => {
                 className="wow fadeInUp mx-auto max-w-[800px] text-center"
                 data-wow-delay=".2s"
               >
-                 <h1 className="mb-5 text-4xl font-bold leading-tight text-black dark:text-white sm:text-5xl sm:leading-tight md:text-6xl md:leading-tight don-hub-heading">
+                 <h1 className="mb-5 text-4xl font-bold leading-tight text-black hover:text-primary dark:text-white sm:text-5xl sm:leading-tight md:text-6xl md:leading-tight don-hub-heading">
                   Don Hub
                 </h1>
                 <h1 className="mb-5 text-base font-bold leading-tight text-black dark:text-white sm:text-lg md:text-xl tagline">

@@ -45,7 +45,7 @@ const SignUpForm = () => {
     }
 
     try {
-      const response = await fetch(`http://localhost:8080/users`, {
+      const response = await fetch(`https://donhub.onrender.com/users`, {
         // Replace with your actual API endpoint
         method: "POST",
         body: formData,

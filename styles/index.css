@@ -23,6 +23,10 @@
     @apply opacity-70;
   }
 
+  .user-greeting {
+    margin-right: 10px; /* Adjust the value as needed */
+  }
+
   input#togglePlan:checked ~ .dot {
     @apply translate-x-full;
   }
